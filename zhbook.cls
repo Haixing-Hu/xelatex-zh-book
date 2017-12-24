@@ -79,6 +79,8 @@
 \RequirePackage{multirow}
 \RequirePackage{enumitem}
 \RequirePackage{xcolor}
+\RequirePackage{commath}
+\RequirePackage{mathtools}
 \RequirePackage{amsmath}
 \RequirePackage{amsthm}
 \RequirePackage{amsfonts}
