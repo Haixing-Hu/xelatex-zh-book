@@ -126,6 +126,7 @@
 \RequirePackage{ifthen}
 \RequirePackage[perpage,symbol*]{footmisc}
 \RequirePackage{etoolbox}
+\RequirePackage{diagbox}
 \RequirePackage[math]{blindtext}
 \input{zhbook.cfg}
 \ifzhbook@adobefonts

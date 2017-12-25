@@ -111,7 +111,7 @@
 %
 % \MakeShortVerb{\|}
 % \newcommand*{\zhbook}{\texttt{Zh-Book}}
-% \newcommand*{\texlive}{{\TeX}\ Live\ 2015}
+% \newcommand*{\texlive}{{\TeX}\ Live\ 2017}
 % \renewcommand*{\fileversion}{1.0.0}
 % \renewcommand*{\filedate}{\today}
 %
@@ -275,7 +275,7 @@
 %     |amsthm|   & |amssymb|    & |bm|        & |mathrsfs| & |txfonts|  & |pifont|  \\
 %     |setspace| & |wasysym|    & |hypernat| & |fancyhdr| & |natbib|    & |tabularx| \\
 %     |titlesec| & |glossaries|  & |ifthen|   & |makeidx| & |footmisc| &  |CJKnumb| \\
-%     |url|      & |etoolbox| &  &  &  & \\
+%     |url|      & |etoolbox|    & |commath|  & |mathtools| & |blindtext| & |diagbox| \\
 %   \hline
 %   \end{tabular*}
 %   \caption{{\zhbook}用到的宏包}\label{table:dependence}
@@ -1140,6 +1140,11 @@
 % |etoolbox|宏包提供了一些工具宏。
 %    \begin{macrocode}
 \RequirePackage{etoolbox}
+%    \end{macrocode}
+%
+% |diagbox|宏包提供斜线划分表格单元格的简单办法。
+%    \begin{macrocode}
+\RequirePackage{diagbox}
 %    \end{macrocode}
 %
 % |blindtext|宏包提供了命令用于生成随机的占位文字，从而在草稿阶段可以看到排版的整体效果。
@@ -2515,7 +2520,7 @@
 \RequirePackage[hyphens]{url} % must be load before hypdoc package
 \RequirePackage{hypdoc} % it will load hyperref package
 \RequirePackage[normalem]{ulem}
-\RequirePackage{dtklogos}
+
 \hypersetup{%
     unicode=false,
     hyperfootnotes=true,
