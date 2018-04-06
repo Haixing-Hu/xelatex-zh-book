@@ -24,7 +24,7 @@
 %<cls>\ProvidesClass{zhbook.cls}
 %<cfg>\ProvidesFile{zhbook.cfg}
 %<*cls>
- [2017/12/24 v1.0.0 Document Class for the Typesetting Chinese Books]
+ [2018/04/06 v1.1.0 Document Class for the Typesetting Chinese Books]
 %</cls>
 %<*driver>
 \documentclass[12pt,a4paper,oneside]{ltxdoc}
@@ -112,7 +112,7 @@
 % \MakeShortVerb{\|}
 % \newcommand*{\zhbook}{\texttt{Zh-Book}}
 % \newcommand*{\texlive}{{\TeX}\ Live\ 2017}
-% \renewcommand*{\fileversion}{1.0.0}
+% \renewcommand*{\fileversion}{1.1.0}
 % \renewcommand*{\filedate}{\today}
 %
 % \pagestyle{empty}
@@ -148,7 +148,8 @@
 %   & \textbf{修订者}
 %   & \textbf{修订内容} \\
 % \midrule
-%  v1.0.0 & 2018/12/24 & 胡海星 & 完成第一个可工作版本 \\
+%  v1.0.0 & 2017/12/24 & 胡海星 & 完成第一个可工作版本 \\
+%  v1.1.0 & 2018/04/06 & 胡海星 & 修改了一些常量名称；增加了对|cleveref|的中文化支持 \\
 %
 % \bottomrule
 % \end{longtable}
@@ -161,7 +162,7 @@
 % \pagestyle{fancy}
 % \section{简介}
 %
-% 文档类{\zhbook}是为了帮助南京大学的老师同学撰写中文科技类教科书的模板。
+% 文档类{\zhbook}是为了帮助老师同学们撰写中文科技类教科书的模板。
 % 该模板提供了一个中文书籍的{\XeLaTeX}文档类，用于生成符合中文书籍排版规范的科技类教科书。
 % 该宏包的底层通过|xeCJK|宏包支持中文。
 %
@@ -269,13 +270,14 @@
 %   \centering\noindent
 %   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}*{6}{l}}
 %   \hline
-%     |ifxetex|  & |indentfirst| & |xeCJK|    & |lastpage| & |geometry|  & |graphicx| \\
-%     |subfig|   & |caption|     & |float|    & |array|    & |longtable| & |booktabs| \\
-%     |multirow| & |hyperref|    & |enumitem| & |xcolor|   & |amsmath|   & |amsfonts| \\
-%     |amsthm|   & |amssymb|    & |bm|        & |mathrsfs| & |txfonts|  & |pifont|  \\
-%     |setspace| & |wasysym|    & |hypernat| & |fancyhdr| & |natbib|    & |tabularx| \\
-%     |titlesec| & |glossaries|  & |ifthen|   & |makeidx| & |footmisc| &  |CJKnumb| \\
+%     |ifxetex|  & |indentfirst| & |xeCJK|    & |lastpage|  & |geometry|  & |graphicx| \\
+%     |subfig|   & |caption|     & |float|    & |array|     & |longtable| & |booktabs| \\
+%     |multirow| & |hyperref|    & |enumitem| & |xcolor|    & |amsmath|   & |amsfonts| \\
+%     |amsthm|   & |amssymb|     & |bm|       & |mathrsfs|  & |txfonts|   & |pifont|  \\
+%     |setspace| & |wasysym|     & |hypernat| & |fancyhdr|  & |natbib|    & |tabularx| \\
+%     |titlesec| & |glossaries|  & |ifthen|   & |makeidx|   & |footmisc|  &  |CJKnumb| \\
 %     |url|      & |etoolbox|    & |commath|  & |mathtools| & |blindtext| & |diagbox| \\
+%     |cleveref| &               &            &             &             &  \\
 %   \hline
 %   \end{tabular*}
 %   \caption{{\zhbook}用到的宏包}\label{table:dependence}
@@ -1101,6 +1103,13 @@
 \urlstyle{same}
 %    \end{macrocode}
 %
+% 使用宏包|cleveref|，可以通过|\cref{label}|进行交叉引用，而无需手动添加引用对象的名称。
+% |\cref{label}|可以自动添加引用对象的名称。例如，|参见式\eqref{eq1}|，|参见定义\ref{thm1}|
+% 可以简化为|参见\cref{eq1}|，|参见\cref{thm1}|。
+%    \begin{macrocode}
+\RequirePackage{cleveref}
+%    \end{macrocode}
+%
 % 美化参考文献排序和引用格式的宏包|natbib|。
 %    \begin{macrocode}
 \RequirePackage[sort&compress,numbers]{natbib}
@@ -1160,30 +1169,30 @@
 % 定义书籍中各章节的中文标题名称字符串常量：
 %    \begin{macrocode}
 %<*cfg>
-\newcommand*{\zhbook@cap@covername}{封面}
-\newcommand*{\zhbook@cap@abstractname}{内容简介}
-\newcommand*{\zhbook@cap@contentsname}{目\hspace{2em}次}
+\newcommand*{\zhbook@cap@cover}{封面}
+\newcommand*{\zhbook@cap@abstract}{内容简介}
+\newcommand*{\zhbook@cap@contents}{目\hspace{2em}次}
 \newcommand*{\zhbook@cap@revisionhistory}{修订历史}
-\newcommand*{\zhbook@cap@listfigurename}{插图清单}
-\newcommand*{\zhbook@cap@listtablename}{附表清单}
-\newcommand*{\zhbook@cap@listsymbolname}{符号清单}
-\newcommand*{\zhbook@cap@listequationname}{公式清单}
-\newcommand*{\zhbook@cap@equationname}{公式}
-\newcommand*{\zhbook@cap@bibname}{参考文献}
-\newcommand*{\zhbook@cap@glossaryname}{术\hspace{0.5em}语\hspace{0.5em}表}
-\newcommand*{\zhbook@cap@indexname}{索\hspace{2em}引}
-\newcommand*{\zhbook@cap@figurename}{图}
-\newcommand*{\zhbook@cap@tablename}{表}
+\newcommand*{\zhbook@cap@listfigure}{插图清单}
+\newcommand*{\zhbook@cap@listtable}{附表清单}
+\newcommand*{\zhbook@cap@listsymbol}{符号清单}
+\newcommand*{\zhbook@cap@listequation}{公式清单}
+\newcommand*{\zhbook@cap@equation}{公式}
+\newcommand*{\zhbook@cap@bib}{参考文献}
+\newcommand*{\zhbook@cap@glossary}{术\hspace{0.5em}语\hspace{0.5em}表}
+\newcommand*{\zhbook@cap@index}{索\hspace{2em}引}
+\newcommand*{\zhbook@cap@figure}{图}
+\newcommand*{\zhbook@cap@table}{表}
 \newcommand*{\zhbook@cap@prologue}{序\hspace{2em}言}
 \newcommand*{\zhbook@cap@preface}{前\hspace{2em}言}
-\newcommand*{\zhbook@cap@acknowledgementname}{致\hspace{2em}谢}
-\newcommand*{\zhbook@cap@appendixname}{附录\thechapter}
+\newcommand*{\zhbook@cap@acknowledgement}{致\hspace{2em}谢}
+\newcommand*{\zhbook@cap@appendix}{附录\thechapter}
 %    \end{macrocode}
 %
 % 定义用于重定义\cs{chaptername}命令的常量。若当前所处位置是文档的|mainmatter|部分，ze
 % 将其定义为``第XX章''的形式，否则将其定义为空字符串。
 %    \begin{macrocode}
-\newcommand*{\zhbook@cap@chaptername}{%
+\newcommand*{\zhbook@cap@chapter}{%
   \if@mainmatter{第\CJKnumber{\thechapter}章}\fi%
 }
 %    \end{macrocode}
@@ -1204,12 +1213,13 @@
 \newcommand*{\zhbook@cap@postulate}{公设}
 \newcommand*{\zhbook@cap@principle}{定律}
 \newcommand*{\zhbook@cap@problem}{问题}
-\newcommand*{\zhbook@cap@exercise}{练习}
+\newcommand*{\zhbook@cap@exercise}{习题}
 \newcommand*{\zhbook@cap@example}{例}
 \newcommand*{\zhbook@cap@remark}{评注}
 \newcommand*{\zhbook@cap@proof}{证明}
 \newcommand*{\zhbook@cap@solution}{解}
 \newcommand*{\zhbook@cap@algorithm}{算法}
+\newcommand*{\zhbook@cap@result}{结果}
 %    \end{macrocode}
 %
 % 定义自定义列表环境的字符串常量：
@@ -1228,6 +1238,43 @@
 \newcommand*{\zhbook@cap@to}{至}
 %    \end{macrocode}
 %
+% 中文化|cleveref|宏包所用到的字符串常量：
+%    \begin{macrocode}
+\crefformat{equation}{#2式~\textnormal{(}#1\textnormal{)}~#3}
+\crefformat{figure}{#2图~#1~#3}
+\crefformat{table}{#2表~#1~#3}
+\crefformat{listing}{#2清单~#1~#3}
+\crefformat{page}{#2第~#1~页#3}
+\crefformat{line}{#2第~#1~行#3}
+\crefformat{part}{#2第~#1~部#3}
+\crefformat{chapter}{#2第~#1~章#3}
+\crefformat{section}{#2第~#1~节#3}
+\crefformat{subsection}{#2第~#1~小节#3}
+\crefformat{appendix}{#2附录~#1~#3}
+\crefformat{enumi}{#2第~#1~点#3}
+\crefformat{footnote}{#2脚注~#1~#3}
+\crefformat{definition}{#2定义~#1~#3}
+\crefformat{notation}{#2记号~#1~#3}
+\crefformat{theorem}{#2定理~#1~#3}
+\crefformat{lemma}{#2引理~#1~#3}
+\crefformat{corollary}{#2推论~#1~#3}
+\crefformat{proposition}{#2命题~#1~#3}
+\crefformat{fact}{#2事实~#1~#3}
+\crefformat{assumption}{#2假设~#1~#3}
+\crefformat{conjecture}{#2猜想~#1~#3}
+\crefformat{hypothesis}{#2假说~#1~#3}
+\crefformat{axiom}{#2公理~#1~#3}
+\crefformat{postulate}{#2公设~#1~#3}
+\crefformat{principle}{#2定律~#1~#3}
+\crefformat{problem}{#2问题~#1~#3}
+\crefformat{exercise}{#2习题~#1~#3}
+\crefformat{example}{#2例~#1~#3}
+\crefformat{remark}{#2评注~#1~#3}
+\crefformat{proof}{#2证明~#1~#3}
+\crefformat{solution}{#2解~#1~#3}
+\crefformat{algorithm}{#2算法~#1~#3}
+\crefformat{result}{#2结果~#1~#3}
+%    \end{macrocode}
 %
 % \subsection{格式控制常量定义}
 %
@@ -1697,6 +1744,7 @@
 \newtheorem{exercise}{\zhbook@cap@exercise}[chapter]
 \newtheorem{example}{\zhbook@cap@example}[chapter]
 \newtheorem{remark}{\zhbook@cap@remark}[chapter]
+\newtheorem{result}{\zhbook@cap@result}[chapter]
 
 \renewenvironment{proof}[1][\zhbook@cap@proof]{\par
   \pushQED{\qed}%
@@ -1752,20 +1800,20 @@
 %
 % 设置常见的中文标题名称。
 %    \begin{macrocode}
-\newcommand*{\abstractname}{\zhbook@cap@abstractname}
-\renewcommand*{\contentsname}{\zhbook@cap@contentsname}
-\renewcommand*{\listfigurename}{\zhbook@cap@listfigurename}
-\renewcommand*{\listtablename}{\zhbook@cap@listtablename}
-\newcommand*{\listsymbolname}{\zhbook@cap@listsymbolname}
-\newcommand*{\listequationname}{\zhbook@cap@listequationname}
-\renewcommand*{\glossaryname}{\zhbook@cap@glossaryname}
-\renewcommand*{\indexname}{\zhbook@cap@indexname}
-\newcommand*{\equationname}{\zhbook@cap@equationname}
-\renewcommand*{\bibname}{\zhbook@cap@bibname}
-\renewcommand*{\figurename}{\zhbook@cap@figurename}
-\renewcommand*{\tablename}{\zhbook@cap@tablename}
-\renewcommand*{\chaptername}{\zhbook@cap@chaptername}
-\renewcommand*{\appendixname}{\zhbook@cap@appendixname}
+\newcommand*{\abstractname}{\zhbook@cap@abstract}
+\renewcommand*{\contentsname}{\zhbook@cap@contents}
+\renewcommand*{\listfigurename}{\zhbook@cap@listfigure}
+\renewcommand*{\listtablename}{\zhbook@cap@listtable}
+\newcommand*{\listsymbolname}{\zhbook@cap@listsymbol}
+\newcommand*{\listequationname}{\zhbook@cap@listequation}
+\renewcommand*{\glossaryname}{\zhbook@cap@glossary}
+\renewcommand*{\indexname}{\zhbook@cap@index}
+\newcommand*{\equationname}{\zhbook@cap@equation}
+\renewcommand*{\bibname}{\zhbook@cap@bib}
+\renewcommand*{\figurename}{\zhbook@cap@figure}
+\renewcommand*{\tablename}{\zhbook@cap@table}
+\renewcommand*{\chaptername}{\zhbook@cap@chapter}
+\renewcommand*{\appendixname}{\zhbook@cap@appendix}
 %    \end{macrocode}
 %
 % \subsection{中文标题格式}
@@ -2319,7 +2367,7 @@
 %    \begin{macrocode}
 \renewcommand*{\maketitle}{%
   \thispagestyle{empty}
-  \pdfbookmark[0]{\zhbook@cap@covername}{cover}
+  \pdfbookmark[0]{\zhbook@cap@cover}{cover}
   \begin{center}
     \vspace{50mm}%
     \rule{\textwidth}{2pt}\\%
@@ -2341,7 +2389,7 @@
   \clearpage
   \thispagestyle{empty}
   \begin{center}
-    \LARGE\textbf{\zhbook@cap@abstractname}
+    \LARGE\textbf{\zhbook@cap@abstract}
   \end{center}
   \vspace{4mm}%
 
@@ -2378,7 +2426,7 @@
 % 该环境用于``致谢''页。
 %    \begin{macrocode}
 \newenvironment{acknowledgement}{%
-  \nchapter{\zhbook@cap@acknowledgementname}
+  \nchapter{\zhbook@cap@acknowledgement}
 }{}
 %    \end{macrocode}
 % \end{environment}

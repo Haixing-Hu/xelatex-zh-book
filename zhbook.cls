@@ -25,7 +25,7 @@
 %% through LaTeX.
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{zhbook.cls}
- [2017/12/24 v1.0.0 Document Class for the Typesetting Chinese Books]
+ [2018/04/06 v1.1.0 Document Class for the Typesetting Chinese Books]
 \newif\ifzhbook@adobefonts\zhbook@adobefontstrue
 \newif\ifzhbook@winfonts\zhbook@winfontsfalse
 \newif\ifzhbook@linuxfonts\zhbook@linuxfontsfalse
@@ -118,6 +118,7 @@
     pdfborder=0 0 0%
 }
 \urlstyle{same}
+\RequirePackage{cleveref}
 \RequirePackage[sort&compress,numbers]{natbib}
 \RequirePackage{hypernat}
 \RequirePackage{tabularx}
@@ -393,6 +394,7 @@
 \newtheorem{exercise}{\zhbook@cap@exercise}[chapter]
 \newtheorem{example}{\zhbook@cap@example}[chapter]
 \newtheorem{remark}{\zhbook@cap@remark}[chapter]
+\newtheorem{result}{\zhbook@cap@result}[chapter]
 
 \renewenvironment{proof}[1][\zhbook@cap@proof]{\par
   \pushQED{\qed}%
@@ -419,20 +421,20 @@
 \renewcommand*{\topfraction}{0.9}
 \renewcommand*{\bottomfraction}{0.8}
 \renewcommand*{\floatpagefraction}{0.85}
-\newcommand*{\abstractname}{\zhbook@cap@abstractname}
-\renewcommand*{\contentsname}{\zhbook@cap@contentsname}
-\renewcommand*{\listfigurename}{\zhbook@cap@listfigurename}
-\renewcommand*{\listtablename}{\zhbook@cap@listtablename}
-\newcommand*{\listsymbolname}{\zhbook@cap@listsymbolname}
-\newcommand*{\listequationname}{\zhbook@cap@listequationname}
-\renewcommand*{\glossaryname}{\zhbook@cap@glossaryname}
-\renewcommand*{\indexname}{\zhbook@cap@indexname}
-\newcommand*{\equationname}{\zhbook@cap@equationname}
-\renewcommand*{\bibname}{\zhbook@cap@bibname}
-\renewcommand*{\figurename}{\zhbook@cap@figurename}
-\renewcommand*{\tablename}{\zhbook@cap@tablename}
-\renewcommand*{\chaptername}{\zhbook@cap@chaptername}
-\renewcommand*{\appendixname}{\zhbook@cap@appendixname}
+\newcommand*{\abstractname}{\zhbook@cap@abstract}
+\renewcommand*{\contentsname}{\zhbook@cap@contents}
+\renewcommand*{\listfigurename}{\zhbook@cap@listfigure}
+\renewcommand*{\listtablename}{\zhbook@cap@listtable}
+\newcommand*{\listsymbolname}{\zhbook@cap@listsymbol}
+\newcommand*{\listequationname}{\zhbook@cap@listequation}
+\renewcommand*{\glossaryname}{\zhbook@cap@glossary}
+\renewcommand*{\indexname}{\zhbook@cap@index}
+\newcommand*{\equationname}{\zhbook@cap@equation}
+\renewcommand*{\bibname}{\zhbook@cap@bib}
+\renewcommand*{\figurename}{\zhbook@cap@figure}
+\renewcommand*{\tablename}{\zhbook@cap@table}
+\renewcommand*{\chaptername}{\zhbook@cap@chapter}
+\renewcommand*{\appendixname}{\zhbook@cap@appendix}
 \titleformat{\chapter}[hang]
             {\centering\zihao{-1}\bfseries}
             {\chaptertitlename}{1em}{}
@@ -708,7 +710,7 @@
 \def\zhbookunderline{\@ifnextchar[\zhbook@underline\CJKunderline}
 \renewcommand*{\maketitle}{%
   \thispagestyle{empty}
-  \pdfbookmark[0]{\zhbook@cap@covername}{cover}
+  \pdfbookmark[0]{\zhbook@cap@cover}{cover}
   \begin{center}
     \vspace{50mm}%
     \rule{\textwidth}{2pt}\\%
@@ -730,7 +732,7 @@
   \clearpage
   \thispagestyle{empty}
   \begin{center}
-    \LARGE\textbf{\zhbook@cap@abstractname}
+    \LARGE\textbf{\zhbook@cap@abstract}
   \end{center}
   \vspace{4mm}%
 
@@ -743,7 +745,7 @@
   \nchapter{\zhbook@cap@preface}
 }{}
 \newenvironment{acknowledgement}{%
-  \nchapter{\zhbook@cap@acknowledgementname}
+  \nchapter{\zhbook@cap@acknowledgement}
 }{}
 \newcommand{\zhbook}{\texttt{NJU-Thesis}}
 \newcommand{\zhdash}{\kern0.3ex\rule[0.8ex]{2em}{0.1ex}\kern0.3ex}
