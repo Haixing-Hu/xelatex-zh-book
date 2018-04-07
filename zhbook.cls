@@ -24,8 +24,8 @@
 %% To produce the documentation run the original source files ending with `.dtx'
 %% through LaTeX.
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{zhbook.cls}
- [2018/04/06 v1.1.0 Document Class for the Typesetting Chinese Books]
+\ProvidesClass{zhbook}
+ [2018/04/07 v1.1.2 Document Class for the Typesetting Chinese Books]
 \newif\ifzhbook@adobefonts\zhbook@adobefontstrue
 \newif\ifzhbook@winfonts\zhbook@winfontsfalse
 \newif\ifzhbook@linuxfonts\zhbook@linuxfontsfalse
@@ -62,7 +62,7 @@
   \zhbook@masterfalse}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
-\LoadClass[12pt,a4paper,doubleside]{book}
+\LoadClass[12pt,a4paper,twoside]{book}
 \RequirePackage{ifxetex}
 \RequireXeTeX
 \RequirePackage{lastpage}
@@ -103,7 +103,7 @@
 \RequirePackage[hyphens]{url}
 \RequirePackage{hyperref}
 \hypersetup{%
-    unicode=false,
+    unicode=true,
     hyperfootnotes=true,
     hyperindex=true,
     pageanchor=true,
@@ -666,11 +666,6 @@
   \if*#2*\else#2\NAT@spacechar\fi%
   \unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close#3}%
 \else #1\fi\endgroup%
-}
-\AtBeginDocument{%
-\let\oldref\ref%
-\renewcommand*{\ref}[1]{\thinspace\oldref{#1}}%
-\renewcommand*{\eqref}[1]{(\oldref{#1})}
 }
 \DefineFNsymbols*{circlednumber}[text]{%
    {\ding{192}} %
