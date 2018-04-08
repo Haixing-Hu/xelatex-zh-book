@@ -25,7 +25,7 @@
 %% through LaTeX.
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{zhbook}
- [2018/04/07 v1.1.2 Document Class for the Typesetting Chinese Books]
+ [2018/04/08 v1.1.3 Document Class for the Typesetting Chinese Books]
 \newif\ifzhbook@adobefonts\zhbook@adobefontstrue
 \newif\ifzhbook@winfonts\zhbook@winfontsfalse
 \newif\ifzhbook@linuxfonts\zhbook@linuxfontsfalse

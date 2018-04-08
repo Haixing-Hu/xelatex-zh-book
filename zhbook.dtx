@@ -24,7 +24,7 @@
 %<cls>\ProvidesClass{zhbook}
 %<cfg>\ProvidesFile{zhbook.cfg}
 %<*cls>
- [2018/04/07 v1.1.2 Document Class for the Typesetting Chinese Books]
+ [2018/04/08 v1.1.3 Document Class for the Typesetting Chinese Books]
 %</cls>
 %<*driver>
 \documentclass[12pt,a4paper,oneside]{ltxdoc}
@@ -112,7 +112,7 @@
 % \MakeShortVerb{\|}
 % \newcommand*{\zhbook}{\texttt{Zh-Book}}
 % \newcommand*{\texlive}{{\TeX}\ Live\ 2017}
-% \renewcommand*{\fileversion}{1.1.2}
+% \renewcommand*{\fileversion}{1.1.3}
 % \renewcommand*{\filedate}{\today}
 %
 % \pagestyle{empty}
@@ -151,7 +151,8 @@
 %  v1.0.0 & 2017/12/24 & 胡海星 & 完成第一个可工作版本 \\
 %  v1.1.0 & 2018/04/06 & 胡海星 & 修改了一些常量名称；增加了对|cleveref|的中文化支持 \\
 %  v1.1.1 & 2018/04/06 & 胡海星 & 修正一些小bug \\
-%  v1.1.2 & 2018/04/06 & 胡海星 & 删除了对|\ref|命令的修改，所有交叉引用可直接用|\cref|命令 \\
+%  v1.1.2 & 2018/04/07 & 胡海星 & 删除了对|\ref|命令的修改，所有交叉引用可直接用|\cref|命令 \\
+%  v1.1.3 & 2018/04/08 & 胡海星 & 修正了一些|\crefformat|的定义\\
 % \bottomrule
 % \end{longtable}
 % \end{center}
@@ -1323,8 +1324,8 @@
 \crefformat{line}{#2第~#1~行#3}
 \crefformat{part}{#2第~#1~部#3}
 \crefformat{chapter}{#2第~#1~章#3}
-\crefformat{section}{#2第~#1~节#3}
-\crefformat{subsection}{#2第~#1~小节#3}
+\crefformat{section}{#2~#1~节#3}
+\crefformat{subsection}{#2~#1~节#3}
 \crefformat{appendix}{#2附录~#1~#3}
 \crefformat{enumi}{#2第~#1~点#3}
 \crefformat{footnote}{#2脚注~#1~#3}
